@@ -50,7 +50,7 @@ const Login = () => {
           <input
             type="text"
             name="email"
-            placeholder="Email or Referral Code"
+            placeholder="Email.."
             value={email || referralCode} // Hangisi doluysa onu gösterir
             onChange={(e) => {
               const value = e.target.value;
@@ -62,7 +62,7 @@ const Login = () => {
             <input
               type={isPasswordVisible ? "text" : "password"}
               name="password"
-              placeholder="Şifrə"
+              placeholder="Şifrə.."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               style={{
