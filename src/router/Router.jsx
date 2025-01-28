@@ -13,8 +13,8 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}  />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />}  />
+        <Route path="/home" element={<Home />} />
         <Route path="/catagory/:catagory" element={<Baxim />} />
         <Route path="/addtodo" element={<AddNewTodo />} />
         <Route path="/cart" element={<Cart />} />

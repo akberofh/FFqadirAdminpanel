@@ -23,7 +23,7 @@ const Login = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigation('/dashboard');
+      navigation('/home');
     }
   }, [navigation, userInfo]);
 
@@ -36,7 +36,7 @@ const Login = () => {
     try {
       const res = await login({ email, password, referralCode }).unwrap();
       dispatch(setCredentials({ ...res }));
-      navigation('/dashboard');
+      navigation('/home');
     } catch (error) {
       toast.error('Sehv email ya sifre')
     }
@@ -90,17 +90,12 @@ const Login = () => {
               {isPasswordVisible ? <IoEyeOutline /> : <IoEyeOffOutline />}
             </span>
           </div>
-          <button style={{ backgroundColor: "transparent", color: "grey", fontWeight: "600", padding: "0" }} onClick={() => navigation('/request-password-reset')}>
-            Şifrəni Unutdum
-          </button>
           {loginError && <div className={styles.error}>{loginError}</div>}
           <button type="submit" disabled={isLoading}>
             {isLoading ? 'Giriş edilir...' : 'Giriş'}
           </button>
         </form>
-        <p className={styles.loginmessage} onClick={() => navigation('/register')}>
-          <span>Qeydiyyat</span>
-        </p>
+     
       </div>
     </section>
   );

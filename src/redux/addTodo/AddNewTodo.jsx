@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { logout } from "../../redux/slices/authSlice";
+import { useLogoutMutation } from "../../redux/slices/usersApiSlice";
 import { useAddQolbaqMutation } from '../slices/qolbaqApiSlice';
 import styles from './AddNewTodo.module.css';
 
@@ -12,6 +14,8 @@ const AddNewTodo = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [addQolbaq] = useAddQolbaqMutation();
+  const [logoutApiCall] = useLogoutMutation();
+
 
   const handlePhotoChange = (e) => {
     setPhoto(e.target.files[0]);
@@ -35,6 +39,16 @@ const AddNewTodo = () => {
       navigate('/cart');
     } catch (err) {
       console.error('Failed to add the todo:', err);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logoutApiCall().unwrap();
+      dispatch(logout());
+      navigate("/");
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -95,6 +109,12 @@ const AddNewTodo = () => {
         <div className={styles.buttons}>
           <button type="submit" className={styles.submitButton}>Yükləyin</button>
           <button type="button" onClick={() => navigate('/cart')} className={styles.cancelButton}>Məhsullar</button>
+          <button
+          onClick={handleLogout}
+          className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+        >
+          Çıkış
+        </button>
 
         </div>
       </form>

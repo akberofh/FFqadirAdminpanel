@@ -96,7 +96,7 @@ const Cart = () => {
       {/* Ürün Listesi */}
       <button 
   type="button" 
-  onClick={() => navigate('/')} 
+  onClick={() => navigate('/home')} 
   className="px-6 py-3 bg-red-800 text-white rounded-lg bottom-11 hover:bg-green-700 transition-colors duration-200 mt-2 mb-2 mx-2"
 >
   Məhsul Əlavə Et
